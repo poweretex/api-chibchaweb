@@ -25,6 +25,8 @@ router.get('/:id', (req,res) =>{
     console.log(id);
 });
 
+
+
 router.post('/save', (req,res)=>{
     console.log(req.body)
     const { email, distributor, domain } = req.body;
