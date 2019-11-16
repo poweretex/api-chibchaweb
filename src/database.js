@@ -1,9 +1,9 @@
 const mysql= require('mysql');
 const mysqlConnection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'registryapi'
+    host: 'us-cdbr-iron-east-05',
+    user: 'b70fc00b4b6126',
+    password: '4974d8a8',
+    database: 'heroku_872189bef0bef76'
 });
 mysqlConnection.connect(function(err){
     if(err){
