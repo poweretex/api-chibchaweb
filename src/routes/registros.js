@@ -11,7 +11,7 @@ router.get('/', (req,res) => {
         }
 
 
-        
+
     });
 });
 
@@ -32,14 +32,23 @@ router.get('/:id', (req,res) =>{
 
 
 router.post('/save', (req,res)=>{
-    console.log(req.body)
-    const { email, distributor, domain } = req.body;
-    mysqlConnection.query('INSERT INTO registry VALUES (0, ? , ?, ?)', [email, distributor, domain],(err, rows,fields)=>{
+ 
+    const { id,email, distributor, domain } = req.body;
+    
+
+    //INSERT INTO registry VALUES (0, ? , ?, ?)
+
+
+    mysqlConnection.query('INSERT INTO registry (id, email, distributor, domain) SELECT ?, ? , ?, ? FROM DUAL WHERE NOT EXISTS (SELECT domain FROM registry WHERE domain =?)'
+    , 
+    [id,email, distributor, domain, domain],(err, rows,fields)=>{
         if(!err){
+            
             res.json(rows);
         } else{
             console.log(err);
         }
+
     });
 
 });
