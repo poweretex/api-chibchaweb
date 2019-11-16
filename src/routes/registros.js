@@ -10,6 +10,8 @@ router.get('/', (req,res) => {
             console.log(err);
         }
 
+
+        
     });
 });
 
